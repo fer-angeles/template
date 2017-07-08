@@ -1,8 +1,8 @@
 <?php
 
 	$host = 'localhost';
-	$usr = 'vapros';
-	$pwd = 'vapros';
+	$usr = 'root';
+	$pwd = '';
 
 	$cn = mysqli_connect($host,$usr,$pwd);
 	
