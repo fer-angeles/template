@@ -2,11 +2,6 @@
     
     #PONER SIEMPRE SI SE USA UNA SESSION
     session_start();
-    //var_dump($_SESSION['id']);
-
-
-
-
 
     if(isset($_SESSION['id'])== false)
     {

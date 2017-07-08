@@ -1,37 +1,22 @@
 <?php
 
-	
-	$host = 'localhost';
-	$usr = 'prix';
-	$pwd = 'prix';
+	require_once 'class/cn.php';
 
-	$cn = mysqli_connect($host,$usr,$pwd);
-
-	if($cn)
-	{
-		mysqli_select_db($cn,'empresa');
-	}
-	else
-	{
-		echo "no se conectó";
-	}
-
-/*RECOGER LOS DATOS*/
+	/*RECOGER LOS DATOS*/
 
 	$usuario = $_POST['email'];
 	$pwd = $_POST['password'];
 
-/*CREAR LA CONSULTA*/
+	/*CREAR LA CONSULTA*/	
 
 	$query ="SELECT id,correo,password FROM usuario WHERE correo = '$usuario' AND password= '$pwd'";
 
-/*EJECUTAR LA CONSULTA*/
+	/*EJECUTAR LA CONSULTA*/
 
 	$ejecutar =mysqli_query($cn,$query);
 	$resultado =mysqli_fetch_array($ejecutar);
 
-/*ACCIÓN DESPUÉS DE EJECUTAR*/
-
+	/*ACCIÓN DESPUÉS DE EJECUTAR*/
 	if(mysqli_num_rows($ejecutar) == 1)
 	{
 		session_start();
@@ -44,9 +29,3 @@
 	{
 		header('location:login.php');
 	}
-
-	
-	
-?>
-
-
