@@ -1,0 +1,1 @@
+INSERT INTO `usuario` (`id`, `nombres`, `apellido_p`, `apellido_m`, `correo`, `password`, `id_tipo_usuario`, `activo`, `creado`) VALUES (NULL, 'Priscilla', 'Sheridan', 'Sifuentes', 'prixparachute@gmail.com', '12345', '1', '0', '2017-06-23 20:55:45');
