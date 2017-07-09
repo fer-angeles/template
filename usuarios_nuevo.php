@@ -55,6 +55,22 @@
 				?>
 			</select>
 		</div>
+		<div class="form-group">
+			<label for="activo">Activo</label>
+			<input type="checkbox" name="activo" id="activo">
+		</div>
+		<div class="form-group">
+			<label for="foto"> Foto</label>
+			<input type="file" name="foto" id="foto">
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<button class="btn btn-block btn-primary" type="submit">Guardar</button>
+			</div>
+			<div class="col-md-6">
+				<a href="usuarios.php" class="btn btn-block btn-danger">Cancelar</a>
+			</div>
+		</div>
 	</form>
 	<br>
 	<br>
