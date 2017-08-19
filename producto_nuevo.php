@@ -79,21 +79,37 @@
 			    data: {
 					'idSub':id
 				},
-			    success: function (data) {
-			        
-			        
-			     
-			    },
-			    error:function() {
-			        alert('Tenemos Problemas =(');
-			    },
-			      
 			    beforeSend:function(){
 			    	$("#sub_categoria").html('<option>Cargando .....</option>');
-			    }
-		    });
+			    },
+			    success: function (data, status) {
+			    	
+			    	//VARIABLE VACIA
+			    	var contenido = '';
+			    	
+			    	//CHECANDO CUANTOS DATOS TIENE LA RESPUESTA
+			    	if(data.length>0)
+			    	{
+			    		//CONTATENANDO LOS DATOS A LA VARIABLE CONTENIDO
+			    		for(var ii in data)
+			    		{
+			    			console.log(data[ii]);
+			    			//CREANDO EL OPTION DE HTML PARA LAS SUBCATEGORIA
+			    			contenido +='<option value="'+data[ii].id+'">'+data[ii].descripcion+'</option>';
+			    		}
+			    	}
+			    	//IMPRIMIENDO LOS DATOS EN EL SELECT DE SUBCATEGORIA
+			    	$("#sub_categoria").html(contenido);
+			    	$("#sub_categoria").prop('disabled',false);
 
-			
+			    },
+			    error:function() {
+			        
+			        alert('Tenemos Problemas =(');
+
+			        $("#sub_categoria").html('');
+			    },
+		    });
 		});
 
 	});
