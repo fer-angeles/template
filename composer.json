@@ -1,0 +1,12 @@
+{
+    "name": "metal/diser2",
+    "authors": [
+        {
+            "name": "Fernando Angeles",
+            "email": "juanfernandoangeles@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^5.2"
+    }
+}

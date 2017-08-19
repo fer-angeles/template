@@ -1,6 +1,5 @@
 <?php
 
-
 class Tabla
 {
 	private $titulos;
@@ -12,8 +11,6 @@ class Tabla
 	{
 		$this->titulos = $titulos;
 		$this->datos = $datos;
-
-
 	}
 
 	
@@ -35,8 +32,6 @@ class Tabla
 
 	}
 	
-
-
 	private function header ()
 	{
 

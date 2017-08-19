@@ -1,0 +1,35 @@
+json
+[
+	{
+		"nombre":"México",
+		"lat":48987987,
+		"lon":8512,
+		"estados":[
+			{
+				"nombre":"GTO",
+				"lat":48987987,
+				"lon":8512,
+				"municipios":[
+					{
+						"nombre":"León",
+						"lat":48987987,
+						"lon":8512,
+						"colonias":["Jardin","Campestre","Jerez"]
+					}
+				]
+			}
+		]	
+	},
+	{
+		"nombre":"EUA",
+		"lat":48987987,
+		"lon":8512,
+		"estados":[
+
+		]
+	}
+]
+
+
+//llave : valor (comillas dobles y coma al final),
+//varios datos van agrupados con corchetes y c/u con llaves

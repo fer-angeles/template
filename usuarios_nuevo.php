@@ -5,17 +5,15 @@
 		form div.form-group label span{
 			color: red !important;
 		}
-
-
 	</style>
-
+	
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">Nuevo Usuario</h1>
 		</div>
 	</div>
 	
-	<form action="usuarios_guardar.php">
+	<form action="usuarios_guardar.php" method="POST" enctype="multipart/form-data"> 
 		<div class="form-group">
 			<label for="nombre">
 				<span class="text-danger">*</span>Nombre
@@ -76,7 +74,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<button class="btn btn-block btn-primary disabled" type="submit">Guardar</button>
+				<button class="btn btn-block btn-primary" type="submit">Guardar</button>
 			</div>
 			<div class="col-md-6">
 				<a href="usuarios.php" class="btn btn-block btn-danger">Cancelar</a>
