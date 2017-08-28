@@ -7,6 +7,7 @@
         }
     ],
     "require": {
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "spipu/html2pdf": "^5.0"
     }
 }

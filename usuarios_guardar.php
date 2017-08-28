@@ -1,7 +1,24 @@
 <?php
 
-	require_once('class/cn.php');
+	require_once 'class/cn.php';
 	
+	require_once 'vendor/autoload.php';
+	
+	$mail             = new PHPMailer;
+	$mail->isSMTP();
+	$mail->Host       = 'smtp.gmail.com';
+	$mail->SMTPAuth   = true;
+	$mail->Username   = 'juanfernandoangeles@gmail.com';
+	$mail->Password   = 'topvsrcuftnjszld';
+	$mail->SMTPSecure = 'tls';
+	$mail->Port       = 587;
+	$mail->setFrom('juanfernandoangeles@gmail.com', 'Fernando');
+
+	//$mail->addCC('juanfernandoangeles@gmail.com');
+	$mail->isHTML(true);
+	
+
+
 	$nombre          = $_POST['nombre'];
 	$apellido_p      = $_POST['apellido_p'];
 	$apellido_m      = $_POST['apellido_m'];
@@ -41,6 +58,38 @@
 
 				/*EJECUTAR CONSULTA*/
 				mysqli_query($cn,$query);
+
+				$mail->addAddress($correo, $nombre);
+				$mail->Subject    = 'Hola '.$nombre;
+				$mail->Body       = '
+						<!DOCTYPE html>
+						<html lang="en">
+						<head>
+							<meta charset="UTF-8">
+							<title>Correo de Notificación</title>
+							<style>
+								.firma{
+									width: 100%;
+									border-left: green solid 3px;
+									height: 70px;
+								}
+							</style>
+						</head>
+						<body>
+
+							<img src="http://compras.recba.company/assets/img/logo.png">
+							<br>
+							<br>
+							<p>Hola <strong>'.$nombre.'</strong>, tu cuenta ya ha sido creada.</p>
+							<div class="firma">
+								ATTE: MI EMPRESA
+							</div>
+						</body>
+						</html>
+
+				';
+
+				$mail->send();
 
 			}
 
