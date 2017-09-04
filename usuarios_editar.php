@@ -9,7 +9,10 @@
 	require_once 'class/cn.php';
 
 	$id    = $_GET['id'];
+	
 	$query = mysqli_query($cn,"SELECT * FROM usuario WHERE id='$id'");
+	
+
 	if(mysqli_num_rows($query) <= 0)
 	{
 		header('Location:usuarios.php');
@@ -35,42 +38,41 @@
 		</div>
 	</div>
 	
-	<form action="usuarios_guardar.php" method="POST" enctype="multipart/form-data"> 
+	<form action="usuarios_editar2.php" method="POST" enctype="multipart/form-data"> 
+		<input type="hidden" name="id" value="<?=$row['id']?>">
+		<input type="hidden" name="fotoOld" value="<?=$row['foto']?>">
 		<div class="form-group">
 			<label for="nombre">
 				<span class="text-danger">*</span>Nombre
 			</label>
-			<input type="text" class="form-control" name="nombre" id="nombre" required>
+			<input type="text" 
+				class="form-control" 
+				name="nombre" 
+				id="nombre" 
+				required 
+				value="<?=isset($row['nombres'])?$row['nombres']:''?>"
+			>
 		</div>
 		<div class="form-group">
 			<label for="apellido_p">
 				<span>*</span>Apellido Paterno
 			</label>
-			<input type="text" class="form-control" name="apellido_p" id="apellido_p" required>
+			<input type="text" class="form-control" name="apellido_p" id="apellido_p" required
+			value="<?=isset($row['apellido_p'])?$row['apellido_p']:''?>">
 		</div>
 		<div class="form-group">
 			<label for="apellido_m">Apellido Materno</label>
-			<input type="text" class="form-control" name="apellido_m" id="apellido_m">
+			<input type="text" class="form-control" name="apellido_m" id="apellido_m" value="<?=isset($row['apellido_m'])?$row['apellido_m']:''?>">
 		</div>
 		<div class="form-group">
 			<label for="correo">Correo</label>
-			<input type="email" class="form-control" name="correo" id="correo" required>
-		</div>
-		<div class="form-group">
-			<label for="password">Contraseña</label>
-			<input type="text" class="form-control" name="password" id="password" required>
-			<div class="mesajes"></div>
-		</div>
-		<div class="form-group">
-			<label for="password2">Repetir Contraseña</label>
-			<input type="text" class="form-control" name="password2" id="password2" required>
-			<div class="mesajes"></div>
+			<input type="email" class="form-control" name="correo" id="correo" required value="<?=isset($row['correo'])?$row['correo']:''?>">
 		</div>
 		<div clas="form-group">
 			<label for="id_tipo_usuario">Tipo Usuario</label>
 			<select name="id_tipo_usuario" id="id_tipo_usuario" class="form-control" required>
+				<option>Selecciona ....</option>
 				<?php
-					require_once 'class/cn.php';
 
 					/*CREAR LA CONSULTA*/
 					$query_tipo_usuario = 'SELECT * FROM usuario_tipo';
@@ -78,20 +80,25 @@
 					/*EJECUTAR LA CONSULTA*/
 					$ejecutar_tipo_usuario = mysqli_query($cn,$query_tipo_usuario);
 
+					var_dump($tipo_usuario);
+
 					/*IMPRIMIR*/
 					while($row_tipo = mysqli_fetch_array($ejecutar_tipo_usuario))
 					{
-						echo '<option value="'.$row_tipo['id'].'">'.ucfirst($row_tipo['tipo_usuario']).'</option>';		
+						
+
+						echo '<option value="'.$row_tipo['id'].'" '.(isset($row['id_tipo_usuario']) && $row_tipo['id'] == $row['id_tipo_usuario']?'selected':'').'>'.ucfirst($row_tipo['tipo_usuario']).'</option>';		
 					}
 				?>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="activo">Activo</label>
-			<input type="checkbox" name="activo" id="activo">
+			<input type="checkbox" name="activo" id="activo" <?=$row['activo'] == 1?'checked':''?> >
 		</div>
 		<div class="form-group">
-			<label for="foto"> Foto</label>
+			<img src="fotos/<?=isset($row['foto'])?$row['foto']:''?>" alt="" class="img-circle" style="width: 100px">
+			<label for="foto"> Foto</label
 			<input type="file" name="foto" id="foto">
 		</div>
 		<div class="row">
@@ -103,7 +110,6 @@
 			</div>
 		</div>
 	</form>
-	
 	<br>
 	<br>
 	<br>

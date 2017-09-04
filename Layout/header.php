@@ -290,6 +290,9 @@
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
+                            <a href="productos.php"><i class="fa fa-product-hunt fa-fw"></i> Productos</a>
+                        </li>
+                        <li>
                             <a href="usuarios.php">
                                 <i class="fa fa-user"></i>
                                 Usuarios
